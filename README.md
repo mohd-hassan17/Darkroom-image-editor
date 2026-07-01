@@ -1,8 +1,7 @@
 # Darkroom — Image Editor
 
-> A browser-based image editor built as a MERN Stack Intern technical assignment for Optimum Output.
+> A browser-based image editor built as a MERN Stack Intern technical assignment for Optimum Output.  
 > Upload, annotate, crop, rotate, and export images — fully client-side, no backend required.
-
 ---
 
 ## 🎥 Demo
