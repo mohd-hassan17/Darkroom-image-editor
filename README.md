@@ -168,6 +168,3 @@ Fabric owns the canvas imperatively; React owns the UI. The boundary is `useFabr
 
 ---
 
-## 📝 License
-
-MIT
