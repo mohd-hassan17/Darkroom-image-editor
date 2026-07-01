@@ -10,7 +10,7 @@
 | | |
 |---|---|
 | **Live Demo** | 🔗 [https://darkroom-rosy.vercel.app/](#) |
-| **Walkthrough Video** | 🎬 [Add your Loom link here](#) |
+| **Walkthrough Video** | 🎬 [https://www.loom.com/share/5a268c34fbb94de591999d84c5190cb5](#) |
 
 ---
 
@@ -48,7 +48,7 @@
 ## 🧱 Tech Stack
 
 - **Framework** — Next.js 16 (App Router)
-- **Language** — TypeScript (strict, zero `any`)
+- **Language** — TypeScript 
 - **Canvas** — Fabric.js v6
 - **Styling** — Tailwind CSS v4
 - **Icons** — lucide-react
@@ -113,12 +113,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Other scripts
 
 ```bash
-npm run build   # Production build (also runs TypeScript type-check)
-npm run start   # Serve the production build
+npm run build   # Production build 
 npm run lint    # ESLint
 ```
-
-Both `lint` and `build` pass with zero errors/warnings.
 
 ---
 
@@ -147,24 +144,3 @@ When you click **Export → Annotation data (JSON)**, you get a file shaped like
   }
 }
 ```
-
-`canvasObjects` is Fabric.js's own serialization format — it contains every annotation object's position, style, and type, and can be loaded back into a canvas with `canvas.loadFromJSON()`.
-
----
-
-## 🔑 Key Implementation Decisions
-
-**Logical vs. display size**
-The canvas's true pixel dimensions are fixed once from the uploaded image. Zoom is purely a display-time scale (`canvas.setZoom`) — object coordinates never change with window size. Export temporarily resets to 1:1 zoom, captures at full resolution, then restores the view.
-
-**Undo / redo as a snapshot stack**
-Full-canvas JSON snapshots rather than a command/diff pattern. Simpler to reason about and correct by construction — Fabric already serializes every object type in use, so there's nothing to miss.
-
-**Crop mode derived from active tool**
-`isCropMode` is not separate state — it's derived directly from `activeTool === "crop"`. One source of truth, no sync bugs.
-
-**Fabric.js + React integration**
-Fabric owns the canvas imperatively; React owns the UI. The boundary is `useFabricCanvas` — it creates the canvas once in a `useEffect`, exposes the instance via context, and every tool panel communicates with it through helper functions, not direct DOM access.
-
----
-
