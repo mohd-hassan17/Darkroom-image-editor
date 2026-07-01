@@ -9,7 +9,7 @@
 
 | | |
 |---|---|
-| **Live Demo** | 🔗 [Add your Vercel / Netlify link here](#) |
+| **Live Demo** | 🔗 [https://darkroom-rosy.vercel.app/](#) |
 | **Walkthrough Video** | 🎬 [Add your Loom link here](#) |
 
 ---
