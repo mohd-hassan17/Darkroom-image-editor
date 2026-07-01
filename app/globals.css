@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-base: #0e0c0a;
+  --bg-panel: #1a1612;
+  --bg-raised: #241e18;
+  --bg-hover: #2c241d;
+  --border-subtle: #332a22;
+  --border-strong: #463a2f;
+  --text-primary: #f3ece2;
+  --text-secondary: #a89a8b;
+  --text-tertiary: #6f6358;
+  --accent: #e8923a;
+  --accent-strong: #ffab5c;
+  --accent-dim: #4a3420;
+  --danger: #d9624a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-base: var(--bg-base);
+  --color-panel: var(--bg-panel);
+  --color-raised: var(--bg-raised);
+  --color-hover: var(--bg-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-dim: var(--accent-dim);
+  --color-danger: var(--danger);
+  --font-display: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-display), system-ui, sans-serif;
 }
+
+/* checkerboard pattern used behind the canvas to signal transparency */
+.checker-bg {
+  background-image:
+    linear-gradient(45deg, #2a231d 25%, transparent 25%),
+    linear-gradient(-45deg, #2a231d 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #2a231d 75%),
+    linear-gradient(-45deg, transparent 75%, #2a231d 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--text-primary);
+}
+
+* {
+  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-width: thin;
+}
+
