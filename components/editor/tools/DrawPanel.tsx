@@ -13,10 +13,6 @@ export function DrawPanel() {
   const [width, setWidth] = useState(4);
   const brushRef = useRef<PencilBrush | null>(null);
 
-  // Fabric.js is an imperative canvas library — toggling drawing mode and
-  // attaching a brush are direct mutations of the canvas instance by
-  // design. See eslint.config.mjs for why react-hooks/immutability is
-  // scoped off for this file.
   useEffect(() => {
     if (!canvas) return;
     const isActive = activeTool === "draw";

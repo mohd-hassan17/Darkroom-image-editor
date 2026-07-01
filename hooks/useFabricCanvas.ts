@@ -67,7 +67,7 @@ export function useFabricCanvas() {
 
   useEffect(() => {
     fitToContainer();
-  }, [canvasSize, canvas]);
+  }, [fitToContainer, canvasSize, canvas]);
 
   useEffect(() => {
     window.addEventListener("resize", fitToContainer);
