@@ -20,7 +20,6 @@ export function useFabricCanvas() {
   });
   const [zoom, setZoom] = useState(1);
 
-  // Create the canvas exactly once.
   useEffect(() => {
     if (!elRef.current) return;
     const fc = new Canvas(elRef.current, {

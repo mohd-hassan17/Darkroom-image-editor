@@ -50,7 +50,7 @@ export function SliderRow({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-[var(--accent)] cursor-pointer"
+        className="w-full accent-accent cursor-pointer"
       />
     </div>
   );

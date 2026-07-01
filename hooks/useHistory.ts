@@ -6,15 +6,6 @@ import type { Canvas } from "fabric";
 const MAX_HISTORY = 30;
 const DEBOUNCE_MS = 400;
 
-/**
- * Undo/redo implemented as a stack of full canvas-state snapshots.
- *
- * This is the simplest correct approach for a small editor like this one:
- * Fabric's own toJSON()/loadFromJSON() already know how to serialize every
- * object type we use (paths, shapes, text, images), so we don't need a
- * custom command/diff system — we just snapshot after each meaningful
- * change and restore wholesale on undo/redo.
- */
 export function useHistory(canvas: Canvas | null) {
   const undoStack = useRef<string[]>([]);
   const redoStack = useRef<string[]>([]);
@@ -33,7 +24,6 @@ export function useHistory(canvas: Canvas | null) {
     return JSON.stringify(canvas.toJSON());
   }, [canvas]);
 
-  /** Throw away history and start fresh from the canvas's current state. */
   const reset = useCallback(() => {
     if (!canvas) return;
     undoStack.current = [snapshot()];
@@ -76,8 +66,6 @@ export function useHistory(canvas: Canvas | null) {
       isApplyingHistory.current = true;
       await canvas.loadFromJSON(JSON.parse(state));
       canvas.requestRenderAll();
-      // loadFromJSON fires its own object:added events; give them a tick to
-      // settle before we start listening for "real" user changes again.
       setTimeout(() => {
         isApplyingHistory.current = false;
       }, 50);
