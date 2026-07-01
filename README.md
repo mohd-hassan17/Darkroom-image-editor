@@ -15,8 +15,6 @@
 
 ## 📸 Screenshots
 
-> _Add screenshots after running the app locally. Suggested shots: empty canvas, image uploaded with annotations, export menu open._
-
 | Empty State | Editor with Annotations |
 |---|---|
 | ![Empty State](./public/empty.png) | ![Editor](./public/edit.png) |
@@ -86,8 +84,6 @@ image-editor/
     │       └── RotatePanel.tsx
     └── ui/                   # Shared primitives (Button, SliderRow, PanelSection)
 ```
-
-**The rule:** components only render. Canvas mutations live in hooks and `lib/fabric-helpers.ts` so they can be reasoned about (and later tested) independently of React.
 
 ---
 
